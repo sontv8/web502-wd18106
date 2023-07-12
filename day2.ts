@@ -114,7 +114,7 @@ interface Manager {
 }
 // ....
 interface Manager {
-    id: string,
+    id: number,
     phoneNumber: string,
     position: string
 }
