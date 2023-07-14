@@ -1,14 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
-// import './index.css'
+import { Header, Footer } from './components'
 
+const menus = [
+  { id: 1, name: "Home", path: '/' },
+  { id: 2, name: "About", path: '/about' },
+  { id: 3, name: "Product", path: '/product' },
+]
+// props
 ReactDOM.createRoot(document.getElementById('root')).render(
-  // <React.StrictMode>
-  //   <App />
-  // </React.StrictMode>,
   <>
-    <h1>Hello</h1>
-    <h2>Title</h2>
+    <Header menus={menus} />
+    <main></main>
+    <Footer />
   </>
 )
