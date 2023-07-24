@@ -1,19 +1,35 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import HomePage from './pages/Home'
+import HomePage from './pages/Homepage.jsx'
+import { Route, Routes } from 'react-router-dom'
+import DetailPage from './pages/Detail'
 
-const products = [
-  { id: 1, name: 'product 1', price: 100 },
-  { id: 2, name: 'product 2', price: 200 },
-  { id: 3, name: 'product 3', price: 300 },
-]
 function App() {
+
+  const [products, setProducts] = useState([])
+
+  useEffect(() => {
+    fetch('http://localhost:3000/products')
+      .then(response => response.json())
+      .then(data => setProducts(data))
+  }, [])
+  console.log(products);
 
   return (
     <>
-      <HomePage data={products} />
+      <Routes>
+        <Route path='/' element={<HomePage products={products} />} />
+        <Route path='/detail' element={<DetailPage />} />
+      </Routes>
+      {/* 
+        admin 
+          dashboard
+          product - hiển thị sản phẩm theo dạng table
+          add product
+          update product
+      */}
     </>
   )
 }
