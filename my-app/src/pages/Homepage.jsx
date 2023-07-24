@@ -1,7 +1,8 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const HomePage = ({ products }) => {
-    console.log("Homepage data: ", products);
+    // console.log("Homepage data: ", products);
     return (
         <div>HomePage
             {products.map((item, index) => {
@@ -9,6 +10,7 @@ const HomePage = ({ products }) => {
                     <div key={index + 1}>
                         <h3>{item.name}</h3>
                         <p>{item.price}</p>
+                        <Link to={`/detail/${item.id}`}><button>Detail</button></Link>
                     </div>
                 )
             })}
